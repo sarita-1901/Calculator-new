@@ -1,0 +1,96 @@
+body
+{
+  background-color: black;
+}
+
+.calculator
+{
+  background-color: rgba(208,179,183,255)  ;
+}
+
+
+.calc-screen
+{
+  height: 7vh;
+  width: 70%;
+  background-color: rgba(96,112,96,255);
+  margin: 10px;
+}
+
+.calc-display
+{
+ 
+}
+
+
+body {
+  width: 500px;
+  margin: 4% auto;
+  font-family: 'Source Sans Pro', sans-serif;
+ /* letter-spacing: 5px; */
+   font-size: 26px;
+  }
+
+.oper
+{
+color: white;
+font-weight: bold;
+border: 1px solid #ddd;
+width: 80px;
+text-align: center;
+padding: 10px;
+margin: 10px 4px 10px 0;
+cursor: pointer;
+/* background-color: rgba(228, 81, 113, 0.801) ; */
+ background-color: rgb(231, 59, 97) ; 
+}
+
+.num
+{
+  color: white;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  width: 80px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px 4px 10px 0;
+  cursor: pointer;
+  background-color: rgba(183, 144, 151, 255) ;
+
+}
+
+.num:active
+{
+ color: black;
+ cursor: pointer;
+}
+.num:hover
+{
+background-color: rgb(184, 106, 120) ;
+
+  ;
+ 
+}
+
+.oper:active
+{
+ color: black;
+}
+.oper
+{
+  background-color: rgba(220, 193, 174, 255) ;
+
+ 
+}
+
+
+
+.calc-buttons
+{
+  display: grid;
+  width: 40%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 3px;
+}
+

@@ -1,21 +1,58 @@
-/* trial code begin*/
 
 
-.navbar-nav {
-  list-style-type: none;
-  display: flex;
-  height: 0.5vh;
-  max-width: 100%;
-justify-content: space-between;
-margin-bottom: 3px;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
 }
 
-.pink
-{
-  border-radius: 25%;
-width: 100px;
-margin-left: 20px;
-  background-image: linear-gradient(315deg, #ffd3ea 0%, #403020 98%);
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+
+input:checked + .slider:before {
+ 
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 
@@ -46,14 +83,25 @@ margin-left: 20px;
 .calculator
 {
   border-radius: 25px;
-  background-color: rgba(208,179,183,255);
   background-color: rgb(196, 180, 183);
- 
-  padding: 20px;
-  padding-bottom: 10px;
   margin: 20px;
   font-family: cursive;  
-width: 275px;
+}
+
+@media screen and (max-width: 400px) {
+  .calculator {
+    width: 275px;
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .calculator {
+    width: 500px;
+    padding: 60px;
+    margin-left: 250px;
+  }
 }
 
 .calculator-default
@@ -67,9 +115,10 @@ width: 275px;
   background-color: rgba(96,112,96,255);
   margin: 8px;
   box-shadow: 0 0 1.5px 1.5px rgba(96,112,96,255);
-   height: 8vh;
+   height: 7vh;
   margin-bottom: 15px;
-  margin-top: 45px;
+  margin-top: 15px;
+  overflow-wrap: break-word;
 }
 
 .calc-answer
@@ -79,102 +128,108 @@ width: 275px;
   box-shadow: 0 0 1.5px 1.5px rgba(96,112,96,255);
  
   height: 5vh;
-  margin-top: 30px;
-  margin-bottom: 35px;
+  margin-top: 10px;
+  margin-bottom: 15px;
  
 }
-    
+
 .num
 {
-  width: 60px;
-  text-align: center;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  font-style: italic;
-  font-size: large;
-  border: 1px solid #ddd;
-  cursor: pointer;
   background-color: #ffd3ea;
   background-image: linear-gradient(315deg, #ffd3ea 0%, #403020 98%);
-  margin: 10px;
-}
-
-.num:active
-{
- color: black;
- cursor: pointer;
-}
-
-.num:hover
-{
-  cursor: pointer;
 }
 
 .num-default
 {
   background: #333;
-  border-radius: 50%;
-  cursor: pointer;
-   width: 45px;
-  height: 45px;
-  margin: 5px;
-  margin-top: 15px;
 }
 
 
-.input
-{
-  margin: 10px;
-}
 
 .oper
 {
   background-color: #a38560;
   background-image: linear-gradient(315deg, #a38560 0%, #e0d4ae 74%);
-  
-  width: 60px;
-  text-align: center;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  font-style: italic;
-  font-size: large;
-  border: 1px solid #ddd;
-  
-  cursor: pointer;
-  margin: 10px;
-  
-}
-
-
-.oper:active
-{
- color: black;
 }
 
 
 .oper-default
 {
   background: #f1a33c;  
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  margin: 5px;
 }
-
 
 .oper-grey
 {
   color: black;
-  font-weight: bold;
-  font-size: large;
-  border: 1px solid #ddd;
-  cursor: pointer;
   background: #a5a5a5;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  margin: 5px;
+}
+
+.input
+{
+  margin: 10px;
+}
+
+.button
+{
+  color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-size: large;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+  
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+    margin: 5px;
+    margin-top: 15px;
+      
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .button {
+    margin: 15px;
+    margin-top: 15px;
+    
+  }
+
+  .input
+{
+  margin-left: 70px;
+}
+
+.output
+{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+}
+
+  .button-custom {
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-size: large;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin: 10px;    
+  }
+
+.button:active
+{
+ color: black; 
+}
+
+.button:hover
+{
+  cursor: pointer;
 }
 

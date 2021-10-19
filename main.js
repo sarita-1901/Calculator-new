@@ -6,10 +6,10 @@ var start = 0;
 var percentclicked = "0";
 
 /*Code for flipping*/
-var pinkswitch = document.querySelector('.pink');
+var switchStatus = document.getElementById('switch');
 var flipobject = document.querySelector('.flip-calc');
 
-pinkswitch.addEventListener( 'click', function() {
+switchStatus.addEventListener( 'change', function() {
   flipobject.classList.toggle('is-flipped');
 });
 
@@ -27,7 +27,6 @@ const answer1 = document.getElementById('answer1');
 const clear = document.getElementById('clear');
 const clear1 = document.getElementById('clear1');
 
-const percent = document.getElementById('percent');
 const percent1 = document.getElementById('percent1');
 
 
@@ -61,6 +60,7 @@ clear.addEventListener('click',() => {
   queue = [];
   input = 0;
   start = 0;
+  percentclicked = "0";  
   display.innerHTML = input;
   display1.innerHTML = input;
   
@@ -72,6 +72,8 @@ clear1.addEventListener('click',() => {
   queue = [];
   input = 0;
   start = 0;
+  percentclicked = "0";  
+
   display.innerHTML = input;
   display1.innerHTML = input;
   
@@ -141,6 +143,7 @@ queue[1] = element.value;
 }
 
 input = 0;
+percentclicked = "0";
 display.innerHTML += element.value;
 answer.innerHTML = queue[0];
 display1.innerHTML += element.value;

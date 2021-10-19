@@ -3,39 +3,120 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/07867755f9.js" crossorigin="anonymous"></script>
   <title>Calculator</title>
   <link rel="stylesheet" href="index.css">
+  
 </head>
+
 <body>
+
+  <nav>
+  <ul class="navbar-nav">
+  <span class="pink"> <li></li></span> 
+  <span class="blue"> <li>Blue</li></span>
+  </ul>
+  </nav>  
+
+<div class="flip-card-scene">
+  
+  <div class="flip-calc">
+
+  <div class="flip-calc-default">
+
+  <div class="calculator calculator-default">
+    <div class="output">
+      <div class="calc-display" id="operation1">  </div>
+      <div class="calc-answer" id="answer1"> Answer </div>
+    </div>
+
+    <div class="input">
+       <button id="clear1" class="oper oper-grey oper-default">AC</button>
+       <button class="oper oper-grey oper-default"> +/-  </button>
+       <button class="pcent oper-grey" value='%' id="percent1"> %  </button>
+       <button class="oper oper-default" value="/">/</button>
+      
+       <br>
+
+       <button class="num num-default" value="7">7  </button>
+       <button class="num num-default" value="8">8  </button>
+       <button class="num num-default" value="9">9  </button>
+       <button class="oper oper-default" value="*" >*</button>
+
+       <br>
+
+       <button class="num num-default" value="4">4  </button>
+       <button class="num num-default" value="5">5  </button>
+       <button class="num num-default" value="6">6  </button>
+       <button class="oper oper-default" value="-">-</button>
+
+       <br>
+
+       <button class="num num-default" value="1">1  </button>
+       <button class="num num-default" value="2">2 </button>
+       <button class="num num-default" value="3">3 </button>
+       <button class="oper oper-default" value="+">+</button>
+
+       <br>
+
+       <button class="num num-default" value="0">0</button>
+       <button class="num num-default" id="decimal" value=".">.</button>
+       <button class="oper oper-grey" id="play1">  <i class="fas fa-play"></i>  </button>
+       <button class="oper oper-default" id="equal" value="=">=</button>
+ 
+       <br>
+ 
+     </div>
+   </div>
+</div>
+
+
+ <div class="flip-calc-custom">
+
   <div class="calculator">
    <div class="output">
-<div class="calc-screen calc-display" id="operation">  </div>
-<div class="calc-screen calc-answer" id="answer"> Answer </div>
+   <div class="calc-screen calc-display" id="operation">  </div>
+   <div class="calc-screen calc-answer" id="answer"> Answer </div>
+   </div>
+
+   <div class="input">
+    <button class="oper" id="play">  <i class="fas fa-play"></i>  </button>
+    <button id="clear" class="oper">AC</button>
+      <button class="oper" id="equal" value="=">=</button>
+   
+      <br>
+      <button class="oper" value="+">+ </button>
+      <button class="oper" value="-">-  </button>
+      <button class="oper" value="*" >*  </button>
+
+      <br>
+      <button class="num" value="0">0</button>
+      <button class="num" id="decimal" value=".">.</button>
+      <button class="oper" value="/">/</button>
+
+      <br>
+      <button class="num" value="7">7  </button>
+      <button class="num" value="8">8  </button>
+      <button class="num" value="9">9  </button>
+
+      <br>
+      <button class="num" value="4">4  </button>
+      <button class="num" value="5">5  </button>
+      <button class="num" value="6">6  </button>
+      
+      <br>
+      <button class="num" value="1">1  </button>
+      <button class="num" value="2">2 </button>
+      <button class="num" value="3">3 </button>
+
+      
+    </div>
+  </div>
+
 </div>
-    <button class="calc-buttons">
-      <button class="oper" value='%'> %  </button>
-      <button class="num"> +/-  </button>
-      <button id="clear" class="oper">AC</button>
-      <button class="oper">DEL  </button>
-<br>         
-<button class="num" value="7">7  </button>
-<button class="num" value="8">8  </button>
-<button class="num" value="9">9  </button>
-<button class="oper" value="*" >*  </button><br>
-<button class="num" value="4">4  </button>
-<button class="num" value="5">5  </button>
-<button class="num" value="6">6  </button>
-<button class="oper" value="-">-  </button><br>
-<button class="num" value="1">1  </button>
-<button class="num" value="2">2 </button>
-<button class="num" value="3">3 </button>
-<button class="oper" value="+">+ </button><br>
-<button class="num">0</button>
-<button class="num" id="decimal" value=".">.</button>
-<button class="num" id="equal">=</button>
-<button class="oper" value="/">/</button>
+</div>
+</div>
 
-
-  <script src="main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

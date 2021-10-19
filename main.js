@@ -3,56 +3,120 @@ console.log("Start");
 var queue = [];
 var input = 0;
 var start = 0;
+var percentclicked = "0";
 
+/*Code for flipping*/
+var pinkswitch = document.querySelector('.pink');
+var flipobject = document.querySelector('.flip-calc');
+
+pinkswitch.addEventListener( 'click', function() {
+  flipobject.classList.toggle('is-flipped');
+});
+
+
+/*Get elements*/
 const display = document.getElementById('operation');
 const answer = document.getElementById('answer');
 
-const decimal = document.getElementById('decimal');
-const clear = document.getElementById('clear');
+const display1 = document.getElementById('operation1');
+const answer1 = document.getElementById('answer1');
 
+
+//const decimal = document.getElementById('decimal');
+
+const clear = document.getElementById('clear');
+const clear1 = document.getElementById('clear1');
+
+const percent = document.getElementById('percent');
+const percent1 = document.getElementById('percent1');
+
+
+const numkey = document.querySelectorAll('.num');
+
+const operKey = document.querySelectorAll('.oper');
+
+
+/*Percent event*/
+
+percent1.addEventListener('click',() =>
+{
+if (input != 0)
+  { 
+  display.innerHTML = input/100;
+  display1.innerHTML = input/100;
+
+  answer.innerHTML = input/100;
+  answer1.innerHTML = input/100;
+
+  percentclicked = "1";
+  input = input/100;
+ }
+
+}
+)
+
+
+/*Clear event*/
 clear.addEventListener('click',() => {
   queue = [];
   input = 0;
   start = 0;
   display.innerHTML = input;
+  display1.innerHTML = input;
+  
   answer.innerHTML = input;
+  answer1.innerHTML = input;
 })
 
-const numkey = document.querySelectorAll('.num');
+clear1.addEventListener('click',() => {
+  queue = [];
+  input = 0;
+  start = 0;
+  display.innerHTML = input;
+  display1.innerHTML = input;
+  
+  answer.innerHTML = input;
+  answer1.innerHTML = input;
+})
+
+
 numkey.forEach(element => {
 
   element.addEventListener('click',() => 
-{
+  {
 
-/*  if ( document.getElementById("answer").innerHTML ===  "ERROR" || (document.getElementById("answer").innerHTML == "0" && element.value != "."))
-  { document.getElementById("answer").innerHTML = ""; }
-*/
 
 //If decimal added and already decimal number, do nothing;
-
-if (element.value == "." && 1==2) 
-//&& input.match(/[.]/))
-{
-
-  } 
-else { 
-  if (start == '0') 
-  {
-input = element.value;
-display.innerHTML = element.value;
-  }
-  else{
-  input += element.value;
-  display.innerHTML += element.value;
-  }
- 
-start = 1;
- //display.innerHTML = input;
+if (element.value == "." && String(input).match(/[.]/))
+{  
 }
+
+else
+{
+  if (queue[1] != "=" && percentclicked != "1")
+  {   
+  if (start == '0') 
+    {
+    input = element.value;
+    display.innerHTML = element.value;
+    display1.innerHTML = element.value;
+    }
+    else
+    {
+    input += element.value;
+    display.innerHTML += element.value;
+    display1.innerHTML += element.value;
+    }
+ 
+   start = 1;
+  }
+}
+
 })
 });
 
-const operKey = document.querySelectorAll('.oper');
+
+
 operKey.forEach(element => {
 
   element.addEventListener('click',() => 
@@ -64,92 +128,79 @@ input = parseFloat(input);
 
 if (queue[0] == null)
 {
-  console.log("Start of array");
 queue[0] = input;
 queue[1] = element.value;
 }
 
 else
 {
-  console.log("Middle of array");
 queue[2] = input;
 queue[0] = calculate(queue[0],queue[1],queue[2]);
 queue[1] = element.value;
 
 }
-console.log("element 0 - " + queue[0]);
-console.log("element 1 - " + queue[1]);
-console.log("element 2 - " + queue[2]);
 
 input = 0;
 display.innerHTML += element.value;
 answer.innerHTML = queue[0];
+display1.innerHTML += element.value;
+answer1.innerHTML = queue[0];
 }});
 
 })
 
+
+
+
+
 const calculate = ((parm1, parm2, parm3) =>
 {
-  console.log("Within Calculate");
-  console.log(parm1 + ":" + parm2 + ":" + parm3);
   var calcAns = 0;
   switch(parm2)
   {
 case '+':
-calcAns = parm1 + parm2;
+calcAns = parm1 + parm3;
 break;
 
 case '-':
-calcAns = parm1 + parm2;
+calcAns = parm1 - parm3;
 break;
 
 case '*':
-calcAns = parm1 + parm2;
+calcAns = parm1 * parm3;
 break;
 
 case '/':
-calcAns = parm1 + parm2;
+calcAns = parm1 / parm3;
 break;
 
+
 }
+
+calcAns = calcAns.toFixed(10);
+calcAns = parseFloat(calcAns);
+
 return calcAns;
 })
 
+//text to speech
 
-//Equal button
-const equalKey = document.getElementById('equal');
-equalKey.addEventListener('click',() => {
-  // input = parseFloat(input);
-  const dividedByZero = 0;
-  // queue.push(input);
-   var answer = queue[0];
-
-   for (let index = 2; index < queue.length; index = index +2) {
-     const element = array[index];
-
-     switch (queue[i-1]) {
-      case '+':
-          answer+= value[i];
-          break;
-      case '-':
-          answer-= value[i];
-          break;
-      case '/':    if (value[i] === 0)   dividedByZero = 1;
-              else      answer = answer / value[i];
-
-          break;
-      case'*': answer = answer * value[i];
-          break;
-  }
-
-   }
-     answer = answer.toFixed(10);
-     answer = parseFloat(answer);
-     document.getElementById("answer").innerHTML =  answer ;
-
-   
-
-})
+const play = document.getElementById("play");
+const play1 = document.getElementById("play1");
 
 
-////
+play.addEventListener(('click'),() => {
+  var finalText = display.innerHTML;
+  finalText = finalText + answer.innerHTML
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = finalText;
+  window.speechSynthesis.speak(msg);
+});
+
+play1.addEventListener(('click'),() => {
+  var finalText = display.innerHTML;
+  finalText = finalText + answer.innerHTML
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = finalText;
+  window.speechSynthesis.speak(msg);
+});

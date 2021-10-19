@@ -1,62 +1,103 @@
-body
+/* trial code begin*/
+
+
+.navbar-nav {
+  list-style-type: none;
+  display: flex;
+  height: 0.5vh;
+  max-width: 100%;
+justify-content: space-between;
+margin-bottom: 3px;
+}
+
+.pink
 {
-  background-color: black;
+  border-radius: 25%;
+width: 100px;
+margin-left: 20px;
+  background-image: linear-gradient(315deg, #ffd3ea 0%, #403020 98%);
+}
+
+
+.flip-calc {
+ position: relative;
+ transition: transform 1s;
+ transform-style: preserve-3d;
+}
+
+
+.flip-calc-default, .flip-calc-custom {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+
+.flip-calc-custom {
+  transform: rotateY(180deg);
+}
+
+
+.flip-calc.is-flipped {
+   transform: rotateY(180deg);
 }
 
 .calculator
 {
-  background-color: rgba(208,179,183,255)  ;
+  border-radius: 25px;
+  background-color: rgba(208,179,183,255);
+  background-color: rgb(196, 180, 183);
+ 
+  padding: 20px;
+  padding-bottom: 10px;
+  margin: 20px;
+  font-family: cursive;  
+width: 275px;
 }
 
-
-.calc-screen
+.calculator-default
 {
-  height: 7vh;
-  width: 70%;
-  background-color: rgba(96,112,96,255);
-  margin: 10px;
+  background-color: black;
 }
+
 
 .calc-display
 {
+  background-color: rgba(96,112,96,255);
+  margin: 8px;
+  box-shadow: 0 0 1.5px 1.5px rgba(96,112,96,255);
+   height: 8vh;
+  margin-bottom: 15px;
+  margin-top: 45px;
+}
+
+.calc-answer
+{
+  background-color: rgba(96,112,96,255);
+  margin: 8px;
+  box-shadow: 0 0 1.5px 1.5px rgba(96,112,96,255);
+ 
+  height: 5vh;
+  margin-top: 30px;
+  margin-bottom: 35px;
  
 }
-
-
-body {
-  width: 500px;
-  margin: 4% auto;
-  font-family: 'Source Sans Pro', sans-serif;
- /* letter-spacing: 5px; */
-   font-size: 26px;
-  }
-
-.oper
-{
-color: white;
-font-weight: bold;
-border: 1px solid #ddd;
-width: 80px;
-text-align: center;
-padding: 10px;
-margin: 10px 4px 10px 0;
-cursor: pointer;
-/* background-color: rgba(228, 81, 113, 0.801) ; */
- background-color: rgb(231, 59, 97) ; 
-}
-
+    
 .num
 {
-  color: white;
-  font-weight: bold;
-  border: 1px solid #ddd;
-  width: 80px;
+  width: 60px;
   text-align: center;
   padding: 10px;
-  margin: 10px 4px 10px 0;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  font-size: large;
+  border: 1px solid #ddd;
   cursor: pointer;
-  background-color: rgba(183, 144, 151, 255) ;
-
+  background-color: #ffd3ea;
+  background-image: linear-gradient(315deg, #ffd3ea 0%, #403020 98%);
+  margin: 10px;
 }
 
 .num:active
@@ -64,33 +105,76 @@ cursor: pointer;
  color: black;
  cursor: pointer;
 }
+
 .num:hover
 {
-background-color: rgb(184, 106, 120) ;
-
-  ;
- 
+  cursor: pointer;
 }
+
+.num-default
+{
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+   width: 45px;
+  height: 45px;
+  margin: 5px;
+  margin-top: 15px;
+}
+
+
+.input
+{
+  margin: 10px;
+}
+
+.oper
+{
+  background-color: #a38560;
+  background-image: linear-gradient(315deg, #a38560 0%, #e0d4ae 74%);
+  
+  width: 60px;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  font-size: large;
+  border: 1px solid #ddd;
+  
+  cursor: pointer;
+  margin: 10px;
+  
+}
+
 
 .oper:active
 {
  color: black;
 }
-.oper
-{
-  background-color: rgba(220, 193, 174, 255) ;
 
- 
+
+.oper-default
+{
+  background: #f1a33c;  
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin: 5px;
 }
 
 
-
-.calc-buttons
+.oper-grey
 {
-  display: grid;
-  width: 40%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 3px;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: #a5a5a5;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin: 5px;
 }
 

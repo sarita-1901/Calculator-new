@@ -85,6 +85,7 @@ input:checked + .slider:before {
   border-radius: 25px;
   background-color: rgb(196, 180, 183);
   margin: 20px;
+  margin-top: 10px;
   font-family: cursive;  
 }
 
@@ -117,7 +118,7 @@ input:checked + .slider:before {
   box-shadow: 0 0 1.5px 1.5px rgba(96,112,96,255);
    height: 7vh;
   margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 10px;
   overflow-wrap: break-word;
 }
 
@@ -129,7 +130,7 @@ input:checked + .slider:before {
  
   height: 5vh;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
  
 }
 
@@ -186,7 +187,7 @@ input:checked + .slider:before {
 @media screen and (max-width: 400px) {
   .button {
     margin: 5px;
-    margin-top: 15px;
+    margin-top: 13px;
       
   }
 }

@@ -2,8 +2,8 @@
 console.log("Start");
 var queue = [];
 var input = 0;
-var start = 0;
-var percentclicked = "0";
+var pernegClicked = "0";
+var prevInput = 0;
 
 /*Code for flipping*/
 var switchStatus = document.getElementById('switch');
@@ -14,21 +14,18 @@ switchStatus.addEventListener( 'change', function() {
 });
 
 
-/*Get elements*/
+/*Get elements - display and answer for 2 calcs*/
 const display = document.getElementById('operation');
 const answer = document.getElementById('answer');
 
 const display1 = document.getElementById('operation1');
 const answer1 = document.getElementById('answer1');
 
-
-//const decimal = document.getElementById('decimal');
-
 const clear = document.getElementById('clear');
 const clear1 = document.getElementById('clear1');
 
 const percent1 = document.getElementById('percent1');
-
+const negate = document.getElementById('negate');
 
 const numkey = document.querySelectorAll('.num');
 
@@ -41,14 +38,50 @@ percent1.addEventListener('click',() =>
 {
 if (input != 0)
   { 
-  display.innerHTML = input/100;
-  display1.innerHTML = input/100;
+    input = input/100;
+    pernegClicked = "1" ;
 
-  answer.innerHTML = input/100;
-  answer1.innerHTML = input/100;
+    if (prevInput != 0)
+    {
+     display.innerHTML = prevInput ;
+     display1.innerHTML = prevInput ;
+     display.innerHTML += input;
+     display1.innerHTML += input;
+   }
+    else
+    {    
+     display.innerHTML = input;
+     display1.innerHTML = input;
+    }
+ 
+  }
+ 
+ }
+ )
 
-  percentclicked = "1";
-  input = input/100;
+
+/*Negate Event*/
+
+negate.addEventListener('click',() =>
+{
+if (input != 0)
+  { 
+    input = (-1) * input;
+    pernegClicked = "1" ;
+
+   if (prevInput != 0)
+   {
+    display.innerHTML = prevInput ;
+    display1.innerHTML = prevInput ;
+    display.innerHTML += input;
+    display1.innerHTML += input;
+  }
+   else
+   {    
+    display.innerHTML = input;
+    display1.innerHTML = input;
+   }
+
  }
 
 }
@@ -59,8 +92,9 @@ if (input != 0)
 clear.addEventListener('click',() => {
   queue = [];
   input = 0;
-  start = 0;
-  percentclicked = "0";  
+  pernegClicked = "0";  
+  prevInput = 0;
+
   display.innerHTML = input;
   display1.innerHTML = input;
   
@@ -71,14 +105,15 @@ clear.addEventListener('click',() => {
 clear1.addEventListener('click',() => {
   queue = [];
   input = 0;
-  start = 0;
-  percentclicked = "0";  
+  pernegClicked = "0";  
+  prevInput = 0;
 
   display.innerHTML = input;
   display1.innerHTML = input;
   
   answer.innerHTML = input;
   answer1.innerHTML = input;
+
 })
 
 
@@ -89,17 +124,20 @@ numkey.forEach(element => {
 
 
 //If decimal added and already decimal number, do nothing;
-if (element.value == "." && String(input).match(/[.]/))
+if (!(element.value == "." && String(input).match(/[.]/)) && pernegClicked != "1" ) 
 {  
-}
+  if (input == 0)
+  {  
+    prevInput = display.innerHTML;
+  }
 
-else
-{
-  if (queue[1] != "=" && percentclicked != "1")
-  {   
-  if (start == '0') 
+  if (queue[1] != "=")
+  {  
+    
+  if (display.innerHTML == '0' || display.innerHTML == null) 
     {
     input = element.value;
+    lastNumEntered = element.value;
     display.innerHTML = element.value;
     display1.innerHTML = element.value;
     }
@@ -110,7 +148,6 @@ else
     display1.innerHTML += element.value;
     }
  
-   start = 1;
   }
 }
 
@@ -123,27 +160,28 @@ operKey.forEach(element => {
 
   element.addEventListener('click',() => 
 {
-  //Form array numkey followed by oper
+
   if (input !== 0)
   {
-input = parseFloat(input);
+   input = parseFloat(input);
 
-if (queue[0] == null)
-{
-queue[0] = input;
-queue[1] = element.value;
-}
+        if (queue[0] == null)
+        {
+         queue[0] = input;
+         queue[1] = element.value;
+        }
 
-else
-{
-queue[2] = input;
-queue[0] = calculate(queue[0],queue[1],queue[2]);
-queue[1] = element.value;
+         else
+         {
+          queue[2] = input;
+          queue[0] = calculate(queue[0],queue[1],queue[2]);
+          queue[1] = element.value;
 
-}
+          }
 
 input = 0;
-percentclicked = "0";
+pernegClicked = "0";
+
 display.innerHTML += element.value;
 answer.innerHTML = queue[0];
 display1.innerHTML += element.value;

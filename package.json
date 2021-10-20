@@ -1,0 +1,23 @@
+{
+  "name": "Calc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarita-1901/Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarita-1901/Calculator/issues"
+  },
+  "homepage": "https://github.com/sarita-1901/Calculator#readme",
+  "devDependencies": {
+    "cypress": "^8.6.0"
+  }
+}
